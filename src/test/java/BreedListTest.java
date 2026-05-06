@@ -7,11 +7,23 @@ import java.util.List;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.DisplayName;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 @DisplayName("GET-Listagem de raças de cães")
 public class BreedListTest extends BaseTest {
 
     DogService service = new DogService();
+
+    @Test
+    @DisplayName("Deve validar o contrato da lista de raças")
+    public void deveValidarContratoListaRacas() {
+        Response response = service.getAllBreeds(DogService.PATH_BREEDS_LIST_ALL);
+
+        response.then()
+                .statusCode(200)
+                .body("status", equalTo("success"))
+                .body(matchesJsonSchemaInClasspath("schemas/breeds-schema.json"));
+    }
 
     @Test
     @DisplayName("Deve retornar todas as raças de cães disponíveis")

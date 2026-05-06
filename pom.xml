@@ -16,7 +16,6 @@
 
     <dependencies>
 
-        <!-- Rest Assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -24,7 +23,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -32,7 +30,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure JUnit 5 para integração com o framework de teste -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
@@ -40,11 +37,17 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure RestAssured correto (com hifens) -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
             <version>2.24.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>5.4.0</version>
             <scope>test</scope>
         </dependency>
 
