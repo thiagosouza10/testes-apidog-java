@@ -23,8 +23,15 @@ jobs:
           cache: 'maven'
 
       - name: Run Tests
-        run: mvn clean test
-        continue-on-error: true # Garante que o relatório seja gerado mesmo se um teste falhar
+        run: |
+          mvn dependency:get -Dartifact=org.aspectj:aspectjweaver:1.9.20.1
+          mvn clean test
+        continue-on-error: true
+
+      - name: Check Allure Results
+        run: |
+          test -d target/allure-results
+          test "$(find target/allure-results -type f | wc -l)" -gt 0
 
       - name: Install Allure CLI
         run: |
